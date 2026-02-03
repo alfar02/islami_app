@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:islami/core/router/app_router.dart';
 import 'package:islami/core/router/navigation_extensions.dart';
 import '../data/onboarding_data.dart';
 import '../widgets/onboarding_page.dart';
@@ -34,7 +35,7 @@ class OnBoardingScreen extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(25)),
           ),
         ),
-        onDone: () => context.pushReplace('/quranScreen'),
+        onDone: () => context.pushAndRemoveAll('/quranScreen'),
       ),
     );
   }

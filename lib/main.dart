@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/core/router/app_router.dart';
+import 'package:islami/core/router/router_generation_config.dart';
 import 'package:islami/features/onboarding/screens/onboarding_screen.dart';
 
 void main() {
@@ -18,8 +20,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Islamic App',
           theme: ThemeData(primarySwatch: Colors.green, useMaterial3: true),
-          initialRoute: '/',
-          routes: {'/': (context) => const OnBoardingScreen()},
+          onGenerateRoute: RouterGenerationConfig.generateRoute,
+          initialRoute: AppRoutes.onBoardingScreen,
         );
       },
     );
