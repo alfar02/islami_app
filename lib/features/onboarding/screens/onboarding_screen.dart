@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:islami/core/router/app_router.dart';
 import 'package:islami/core/router/navigation_extensions.dart';
+import 'package:islami/core/styling/app_color.dart';
 import '../data/onboarding_data.dart';
 import '../widgets/onboarding_page.dart';
 
@@ -19,7 +19,7 @@ class OnBoardingScreen extends StatelessWidget {
         showBackButton: true,
         back: Text(
           "Back",
-          style: TextStyle(fontSize: 18.sp, color: Colors.amber),
+          style: TextStyle(fontSize: 18.sp, color: AppColor.primaryColor),
         ),
         next: Icon(Icons.arrow_forward, size: 32.sp, color: Colors.amber),
         done: Text(
@@ -35,7 +35,7 @@ class OnBoardingScreen extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(25)),
           ),
         ),
-        onDone: () => context.pushAndRemoveAll('/quranScreen'),
+        onDone: () => context.pushAndRemoveAll('/homeLayout'),
       ),
     );
   }

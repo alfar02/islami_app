@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/features/quran/presentation/widgets/most_recently.dart';
+import 'package:islami/features/quran/presentation/widgets/sura_search.dart';
+import 'package:islami/features/quran/presentation/widgets/suras_list.dart';
 
 class QuranScreen extends StatelessWidget {
   const QuranScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('القرآن الكريم')),
-      body: const Center(child: Text('هنا سيتم عرض السور من الـ API')),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 205.h),
+          SuraSearch(),
+          SizedBox(height: 20.h),
+          MostRecently(),
+          SizedBox(height: 10.h),
+          Expanded(child: SurasList()),
+        ],
+      ),
     );
   }
 }

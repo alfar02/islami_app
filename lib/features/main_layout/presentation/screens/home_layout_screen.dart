@@ -1,37 +1,77 @@
 import 'package:flutter/material.dart';
-class MainLayoutScreen extends StatefulWidget {
-  const MainLayoutScreen({super.key});
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/features/main_layout/presentation/screens/bottom_nav_bar.dart';
+import 'package:islami/features/quran/presentation/hadith/screens/hadith_tab.dart';
+import 'package:islami/features/quran/presentation/screens/quran_screen.dart';
+import 'package:islami/features/radio/screens/radio_tab.dart';
+import 'package:islami/features/settings/screens/settings_tab.dart';
+import 'package:islami/features/tasbeeh/presentation/tasbeeh_tab.dart';
+
+class HomeLayout extends StatefulWidget {
+  const HomeLayout({super.key});
 
   @override
-  State<MainLayoutScreen> createState() => _MainLayoutScreenState();
+  State<HomeLayout> createState() => _HomeLayoutState();
 }
 
-class _MainLayoutScreenState extends State<MainLayoutScreen> {
-  int _currentIndex = 0;
+class _HomeLayoutState extends State<HomeLayout> {
+  int currentIndex = 0;
 
-  final List<Widget> _screens = [
-    const Center(child: Text('صفحة القرآن')), 
-    const Center(child: Text('صفحة التسبيح')),
-    const Center(child: Text('صفحة الحديث')),
+  final pages = const [
+    QuranScreen(),
+    HadithScreen(),
+    TasbeehScreen(),
+    RadioScreen(),
+    SettingsScreen(),
+  ];
+
+  final backgrounds = [
+    "assets/images/hadith_bg.png",
+    "assets/images/background.png",
+    "assets/images/sebha_bg.png",
+    "assets/images/radio_bg.png",
+    "assets/images/more_bg.png",
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: 'القرآن'),
-          BottomNavigationBarItem(icon: Icon(Icons.fingerprint), label: 'تسبيح'),
-          BottomNavigationBarItem(icon: Icon(Icons.auto_stories), label: 'حديث'),
-        ],
-      ),
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: Image.asset(backgrounds[currentIndex], fit: BoxFit.fill),
+        ),
+
+        Positioned.fill(
+          child: Container(
+            color: Colors.black.withOpacity(0.90), 
+          ),
+        ),
+
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Stack(
+            alignment: Alignment.center,
+            children: [
+              Positioned(
+                top: 20,
+                child: SizedBox(
+                  height: 170.h,
+                  child: Image.asset('assets/images/intro_screen_top.png'),
+                ),
+              ),
+              pages[currentIndex],
+            ],
+          ),
+          bottomNavigationBar: BottomNavBar(
+            currentIndex: currentIndex,
+            onTap: (index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+          ),
+        ),
+      ],
     );
   }
 }

@@ -13,18 +13,18 @@ class AppStyles {
   static TextStyle subTitelStyle = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
-    color: AppColor.secondaryColor,
+    color: AppColor.backgroundColor,
   );
 
   static TextStyle black16w500Style = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
-    color: AppColor.blackColor,
+    color: AppColor.primaryColor,
   );
   static TextStyle gray12MediumStyle = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w600,
-    color: AppColor.grayColor,
+    color: AppColor.white,
   );
   
 }
